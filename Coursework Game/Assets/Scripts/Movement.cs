@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
@@ -17,7 +17,15 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private Joystick joystick;
     private Rigidbody _rigidbody;
-    
+
+    private void Awake()
+    {
+        GlobalEventManager.OnFinish.AddListener(() =>
+        {
+            enabled = false;
+        });
+    }
+
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
