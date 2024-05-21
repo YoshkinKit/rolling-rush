@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class CoinPickup : MonoBehaviour
@@ -19,6 +18,7 @@ public class CoinPickup : MonoBehaviour
         {
             _coinCount++;
             Destroy(other.gameObject);
+            GlobalEventManager.SendOnCoinPickup();
             Debug.Log(_coinCount);
         }
     }
