@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 
 public class PauseManager : InGamePanelManager
 {
     private bool _isPaused;
-
+    
     private void Start()
     {
         _isPaused = false;
@@ -15,6 +14,7 @@ public class PauseManager : InGamePanelManager
     {
         _isPaused = !_isPaused;
         panel.SetActive(_isPaused);
+        SetTimerText();
         Time.timeScale = _isPaused ? 0f : 1f;
     }
 

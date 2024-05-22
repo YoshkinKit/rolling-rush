@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,7 +5,8 @@ using UnityEngine.SceneManagement;
 public class InGamePanelManager : MonoBehaviour
 {
     [SerializeField] protected GameObject panel;
-    [SerializeField] protected TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private Timer timer;
     
     public virtual void ResetLevel()
     {
@@ -16,13 +14,16 @@ public class InGamePanelManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
-    public virtual void BackToMainMenu()
+    public void BackToMainMenu()
     {
         SceneManager.LoadScene("Main Menu");
     }
 
-    protected void SetTimerText(string text)
+    protected void SetTimerText()
     {
-        timerText.text = text;
+        int minutes = Mathf.FloorToInt(timer.LevelTime / 60);
+        int seconds = Mathf.FloorToInt(timer.LevelTime % 60);
+
+        timerText.text = $"{minutes:D2}:{seconds:D2}";
     }
 }

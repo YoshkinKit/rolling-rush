@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -6,22 +5,21 @@ public class HUDInfo : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI coinsLeftText;
-    [SerializeField] private List<GameObject> coins;
+    [SerializeField] private CoinManager coinManager;
     [SerializeField] private Timer timer;
     
     private void Awake()
     {
-        GlobalEventManager.OnCoinPickup.AddListener(() =>
+        GlobalEventManager.OnCoinPickup.AddListener((coin) =>
         {
-            coins.RemoveAt(0);
-            coinsLeftText.text = $"Coins left: {coins.Count}";
+            coinsLeftText.text = $"Coins left: {coinManager.Coins.Count}";
         });
     }
 
     private void Start()
     {
         timerText.text = "00:00";
-        coinsLeftText.text = $"Coins left: {coins.Count}";
+        coinsLeftText.text = $"Coins left: {coinManager.Coins.Count}";
     }
 
     private void Update()

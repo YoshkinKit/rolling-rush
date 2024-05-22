@@ -1,3 +1,5 @@
+using System;
+
 public class FinishManager : InGamePanelManager
 {
     private void Start()
@@ -7,6 +9,7 @@ public class FinishManager : InGamePanelManager
         GlobalEventManager.OnFinish.AddListener(() =>
         {
             panel.SetActive(true);
+            SetTimerText();
         });
     }
 }

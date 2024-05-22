@@ -22,6 +22,11 @@ public class Movement : MonoBehaviour
         GlobalEventManager.OnFinish.AddListener(() =>
         {
             enabled = false;
+            _rigidbody.velocity = Vector3.zero;
+        });
+        GlobalEventManager.OnDeath.AddListener(() =>
+        {
+            enabled = false;
         });
     }
 
