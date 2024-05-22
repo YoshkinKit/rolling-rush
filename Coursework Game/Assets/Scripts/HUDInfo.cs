@@ -7,8 +7,8 @@ public class HUDInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI coinsLeftText;
     [SerializeField] private List<GameObject> coins;
-    private float _levelTime;
-
+    [SerializeField] private Timer timer;
+    
     private void Awake()
     {
         GlobalEventManager.OnCoinPickup.AddListener(() =>
@@ -26,14 +26,14 @@ public class HUDInfo : MonoBehaviour
 
     private void Update()
     {
-        UpdateTimer();
+        UpdateTimerText();
     }
 
-    private void UpdateTimer()
+    private void UpdateTimerText()
     {
-        _levelTime += Time.deltaTime;
-        int minutes = Mathf.FloorToInt(_levelTime / 60);
-        int seconds = Mathf.FloorToInt(_levelTime % 60);
+        int minutes = Mathf.FloorToInt(timer.LevelTime / 60);
+        int seconds = Mathf.FloorToInt(timer.LevelTime % 60);
+
         timerText.text = $"{minutes:D2}:{seconds:D2}";
     }
 }
