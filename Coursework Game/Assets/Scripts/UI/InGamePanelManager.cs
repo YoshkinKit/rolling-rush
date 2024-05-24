@@ -1,7 +1,6 @@
 using CourseworkGame.Core;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace CourseworkGame.UI
 {
@@ -19,8 +18,7 @@ namespace CourseworkGame.UI
     
         public void BackToMainMenu()
         {
-            // LevelLoadingManager.LoadLevel(SceneManager.GetSceneByName("Main Menu").buildIndex);
-            LevelLoadingManager.Instance.LoadLevel(0); // Первая сцена всегда Main Menu
+            LevelLoadingManager.Instance.LoadLevel("Main Menu");
         }
 
         protected void SetTimerText()

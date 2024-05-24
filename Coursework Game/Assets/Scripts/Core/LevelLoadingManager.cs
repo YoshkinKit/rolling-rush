@@ -46,7 +46,7 @@ namespace CourseworkGame.Core
         public void LoadLevel(string levelName)
         {
             SceneManager.LoadScene(levelName);
-            CurrentLevelIndex = SceneManager.GetActiveScene().buildIndex;
+            CurrentLevelIndex = SceneManager.GetSceneByName(levelName).buildIndex;
             
             Debug.Log("Current scene index: " + CurrentLevelIndex);
         }
