@@ -50,6 +50,8 @@ namespace CourseworkGame.UI
         public void ChangeToStorePanel()
         {
             ChangeState(PanelState.Store);
+            storePanel.GetComponent<StorePanelManager>().SetCoinsText();
+            storePanel.GetComponent<StorePanelManager>().SetStarsText();
         }
     
         public void ChangeToLevelSelectPanel()

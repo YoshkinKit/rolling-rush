@@ -1,11 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace CourseworkGame.Saving
 {
     [Serializable]
     public class LevelProgress
     {
-        public List<int> collectedCoins = new();
+        public float recordTime = float.MaxValue;
+        public bool gotCoinForLevelCompletion;
+        public bool gotCoinForFastCompletion;
+        public bool gotCoinForCollectingCoins;
     }
 }

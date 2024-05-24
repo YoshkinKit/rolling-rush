@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace CourseworkGame.Saving
 {
@@ -7,6 +6,7 @@ namespace CourseworkGame.Saving
     public class PlayerProgress
     {
         public int highestLevelCompleted;
-        public Dictionary<string, LevelProgress> LevelProgresses = new();
+        public int coinsCount;
+        public int starsCount;
     }
 }

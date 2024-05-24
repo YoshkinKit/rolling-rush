@@ -14,12 +14,13 @@ namespace CourseworkGame.UI
         public virtual void ResetLevel()
         {
             panel.SetActive(false);
-            LevelLoadingManager.LoadLevel(LevelLoadingManager.CurrentLevelIndex);
+            LevelLoadingManager.Instance.LoadLevel(LevelLoadingManager.Instance.CurrentLevelIndex);
         }
     
         public void BackToMainMenu()
         {
-            LevelLoadingManager.LoadLevel(SceneManager.GetSceneByName("Main Menu").buildIndex);
+            // LevelLoadingManager.LoadLevel(SceneManager.GetSceneByName("Main Menu").buildIndex);
+            LevelLoadingManager.Instance.LoadLevel(0); // Первая сцена всегда Main Menu
         }
 
         protected void SetTimerText()

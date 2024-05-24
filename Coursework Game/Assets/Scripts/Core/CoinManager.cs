@@ -6,18 +6,18 @@ namespace CourseworkGame.Core
 {
     public class CoinManager : MonoBehaviour
     {
-        public int CoinCount { get; private set; }
-        public List<GameObject> Coins { get; private set; }
+        public int CurrentCoinCount { get; private set; }
+        public List<GameObject> RemainingCoins { get; private set; }
 
         private void Awake()
         {
             GlobalEventManager.OnCoinPickup.AddListener(coin =>
             {
-                CoinCount++;
+                CurrentCoinCount++;
                 Destroy(coin);
-                Coins.Remove(coin);
+                RemainingCoins.Remove(coin);
             });
-            Coins = GameObject.FindGameObjectsWithTag("Coin").ToList();
+            RemainingCoins = GameObject.FindGameObjectsWithTag("Coin").ToList();
         }
     }
 }

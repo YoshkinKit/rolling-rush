@@ -15,14 +15,14 @@ namespace CourseworkGame.UI
         {
             GlobalEventManager.OnCoinPickup.AddListener((coin) =>
             {
-                coinsLeftText.text = $"Coins left: {coinManager.Coins.Count}";
+                coinsLeftText.text = $"Coins left: {coinManager.RemainingCoins.Count}";
             });
         }
 
         private void Start()
         {
             timerText.text = "00:00";
-            coinsLeftText.text = $"Coins left: {coinManager.Coins.Count}";
+            coinsLeftText.text = $"Coins left: {coinManager.RemainingCoins.Count}";
         }
 
         private void Update()
