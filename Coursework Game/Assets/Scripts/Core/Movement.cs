@@ -18,6 +18,7 @@ namespace CourseworkGame.Core
 
         [SerializeField] private Joystick joystick;
         private Rigidbody _rigidbody;
+        private Transform _mainCameraTransform;
 
         private void Awake()
         {
@@ -35,6 +36,7 @@ namespace CourseworkGame.Core
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody>();
+            _mainCameraTransform = Camera.main.transform;
         }
 
         private void FixedUpdate()
@@ -52,7 +54,7 @@ namespace CourseworkGame.Core
 
         private void MoveWithJoystick()
         {
-            Move(Vector3.forward * joystick.Vertical + Vector3.right * joystick.Horizontal);
+            Move(Vector3.right * joystick.Horizontal + Vector3.forward * joystick.Vertical);
         }
 
         private void MoveWithAccelerometer()
@@ -62,7 +64,17 @@ namespace CourseworkGame.Core
 
         private void Move(Vector3 direction)
         {
-            _rigidbody.AddForce(direction * (speed * Time.fixedDeltaTime));
+            if (direction == Vector3.zero) return;
+            
+            float targetRotationYAngle = Rotate(direction);
+            Vector3 targetRotationDirection = GetTargetRotationDirection(targetRotationYAngle);
+            
+            _rigidbody.AddForce(targetRotationDirection * (Time.fixedDeltaTime * speed));
+        }
+        
+        private Vector3 GetTargetRotationDirection(float targetAngle)
+        {
+            return Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
         }
 
         private Vector3 AdjustAcceleration(Vector3 acceleration)
@@ -83,6 +95,38 @@ namespace CourseworkGame.Core
             acceleration.y = 0;
 
             return acceleration;
+        }
+
+        private float Rotate(Vector3 direction)
+        {
+            float directionAngle = GetDirectionAngle(direction);
+            directionAngle = AddCameraDirectionAngle(directionAngle);
+
+            return directionAngle;
+        }
+
+        private float GetDirectionAngle(Vector3 direction)
+        {
+            float directionAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+
+            if (directionAngle < 0f)
+            {
+                directionAngle += 360f;
+            }
+
+            return directionAngle;
+        }
+
+        private float AddCameraDirectionAngle(float angle)
+        {
+            angle += _mainCameraTransform.eulerAngles.y;
+
+            if (angle > 360f)
+            {
+                angle -= 360f;
+            }
+
+            return angle;
         }
 
         public enum MovementType
