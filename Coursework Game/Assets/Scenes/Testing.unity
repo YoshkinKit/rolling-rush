@@ -2997,7 +2997,7 @@ PrefabInstance:
       objectReference: {fileID: 411399447}
     - target: {fileID: 273858415886542321, guid: dc81d71f40f9781499c8f68f5fada430, type: 3}
       propertyPath: movementType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1743054087834987846, guid: dc81d71f40f9781499c8f68f5fada430, type: 3}
       propertyPath: m_Name

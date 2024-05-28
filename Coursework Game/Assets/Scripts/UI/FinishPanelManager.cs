@@ -3,7 +3,6 @@ using CourseworkGame.Saving;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace CourseworkGame.UI
@@ -37,15 +36,15 @@ namespace CourseworkGame.UI
             LevelProgress progress = SaveSystem.LoadLevelProgress(SceneManager.GetActiveScene().name);
 
             int starsCount = 0;
-            if (progress.gotCoinForLevelCompletion)
+            if (progress.gotStarForLevelCompletion)
             {
                 starsCount++;
             }
-            if (progress.gotCoinForCollectingCoins)
+            if (progress.gotStarForCollectingCoins)
             {
                 starsCount++;
             }
-            if (progress.gotCoinForFastCompletion)
+            if (progress.gotStarForFastCompletion)
             {
                 starsCount++;
             }

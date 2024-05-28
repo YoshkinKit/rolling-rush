@@ -2,7 +2,7 @@ using CourseworkGame.Saving;
 using TMPro;
 using UnityEngine;
 
-namespace CourseworkGame
+namespace CourseworkGame.UI
 {
     public class StorePanelManager : MonoBehaviour
     {

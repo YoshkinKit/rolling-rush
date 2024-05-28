@@ -38,17 +38,12 @@ namespace CourseworkGame.Core
                 SceneManager.LoadScene(levelIndex);
                 CurrentLevelIndex = levelIndex;
             }
-            
-            Debug.Log("Level index: " + levelIndex);
-            Debug.Log("Current scene index: " + CurrentLevelIndex);
         }
         
         public void LoadLevel(string levelName)
         {
             SceneManager.LoadScene(levelName);
             CurrentLevelIndex = SceneManager.GetSceneByName(levelName).buildIndex;
-            
-            Debug.Log("Current scene index: " + CurrentLevelIndex);
         }
     }
 }

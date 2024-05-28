@@ -6,8 +6,8 @@ namespace CourseworkGame.Saving
     public class LevelProgress
     {
         public float recordTime = float.MaxValue;
-        public bool gotCoinForLevelCompletion;
-        public bool gotCoinForFastCompletion;
-        public bool gotCoinForCollectingCoins;
+        public bool gotStarForLevelCompletion;
+        public bool gotStarForFastCompletion;
+        public bool gotStarForCollectingCoins;
     }
 }

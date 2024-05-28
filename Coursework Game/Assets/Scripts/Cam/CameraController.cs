@@ -11,6 +11,7 @@ namespace CourseworkGame.Cam
         private CinemachineVirtualCamera _virtualCamera;
         private Camera _mainCamera;
         private Vector2 _lookInput;
+        private int _joystickFingerId = -1;
 
         private void Start()
         {
@@ -24,10 +25,24 @@ namespace CourseworkGame.Cam
             
             foreach (var touch in Input.touches)
             {
-                if (!IsTouchingJoystick(touch.position))
+                if (touch.phase == TouchPhase.Began)
                 {
-                    _lookInput += touch.deltaPosition * sensitivity;
+                    if (IsTouchingJoystick(touch.position))
+                    {
+                        _joystickFingerId = touch.fingerId;
+                    }
                 }
+                
+                if (touch.fingerId == _joystickFingerId)
+                {
+                    if (touch.phase is TouchPhase.Ended or TouchPhase.Canceled)
+                    {
+                        _joystickFingerId = -1;
+                    }
+                    continue;
+                }
+                
+                _lookInput += touch.deltaPosition * sensitivity;
             }
 
             if (_lookInput != Vector2.zero)

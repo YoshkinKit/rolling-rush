@@ -67,21 +67,21 @@ namespace CourseworkGame.Core
             }
 
             PlayerProgress playerProgress = SaveSystem.LoadPlayerProgress();
-            if (!progress.gotCoinForLevelCompletion)
+            if (!progress.gotStarForLevelCompletion)
             {
-                progress.gotCoinForLevelCompletion = true;
+                progress.gotStarForLevelCompletion = true;
                 playerProgress.starsCount++;
             }
             
-            if (coinManager.RemainingCoins.Count == 0 && !progress.gotCoinForCollectingCoins)
+            if (coinManager.RemainingCoins.Count == 0 && !progress.gotStarForCollectingCoins)
             {
-                progress.gotCoinForCollectingCoins = true;
+                progress.gotStarForCollectingCoins = true;
                 playerProgress.starsCount++;
             }
             
-            if (timer.LevelTime < timeToGetCoins && !progress.gotCoinForFastCompletion)
+            if (timer.LevelTime < timeToGetCoins && !progress.gotStarForFastCompletion)
             {
-                progress.gotCoinForFastCompletion = true;
+                progress.gotStarForFastCompletion = true;
                 playerProgress.starsCount++;
             }
 
