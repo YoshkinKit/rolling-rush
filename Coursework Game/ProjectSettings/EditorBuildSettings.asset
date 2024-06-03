@@ -14,6 +14,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Testing 2.unity
     guid: b4607a6739f22ed4e876bb7c7ff2fcd0
+  - enabled: 1
+    path: Assets/Scenes/Testing 3.unity
+    guid: bcee1f704edb4e843b0aa5194c806712
+  - enabled: 1
+    path: Assets/Scenes/Testing 4.unity
+    guid: 728b887480e4e4c4ea53fa9b1e948743
+  - enabled: 1
+    path: Assets/Scenes/Testing 5.unity
+    guid: b255956ad24efd048b37dfaad854d650
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 93f44faf206842042b0e66b067f8f094, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: a0b114283d8569045b7ce918c26a4ef1, type: 2}

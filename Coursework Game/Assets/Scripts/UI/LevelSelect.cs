@@ -12,43 +12,41 @@ namespace CourseworkGame.UI
 
         private void Start()
         {
-            PlayerProgress playerProgress = SaveSystem.LoadPlayerProgress();
+            var playerProgress = SaveSystem.LoadPlayerProgress();
             
             for (int i = 0; i < levelButtons.Count; i++)
             {
-                levelButtons[i].interactable = i < playerProgress.highestLevelCompleted;
-                
-                var stars = levelButtons[i].transform.GetChild(1);
-                var levelProgress = SaveSystem.LoadLevelProgress($"Testing {i + 1}");
-                Debug.Log($"Testing {i + 1}");
-                Debug.Log(levelProgress.gotStarForLevelCompletion);
-                Debug.Log(levelProgress.gotStarForCollectingCoins);
-                Debug.Log(levelProgress.gotStarForFastCompletion);
-                SetStars(levelProgress, stars);
-                
-                var i1 = i;
-                levelButtons[i].onClick.AddListener(() =>
-                {
-                    LevelLoadingManager.Instance.LoadLevel(i1 + 1);
-                });
+                SetStars(i);
+                SetButton(i, playerProgress.highestLevelCompleted);
             }
         }
 
-        private static void SetStars(LevelProgress levelProgress, Transform stars)
+        private void SetButton(int index, int highestLevelCompleted)
         {
-            var starsCount = new[] { levelProgress.gotStarForLevelCompletion, levelProgress.gotStarForCollectingCoins, levelProgress.gotStarForFastCompletion};
+            levelButtons[index].interactable = index < highestLevelCompleted;
+            levelButtons[index].onClick.AddListener(() =>
+            {
+                LevelLoadingManager.Instance.LoadLevel(index + 1);
+            });
+        }
+
+        private void SetStars(int index)
+        {
+            var stars = levelButtons[index].transform.GetChild(1);
+            var levelProgress = SaveSystem.LoadLevelProgress($"Testing {index + 1}");
+            var starsFlags = new[] { levelProgress.gotStarForLevelCompletion, levelProgress.gotStarForCollectingCoins, levelProgress.gotStarForFastCompletion};
+            foreach (var f in starsFlags)
+            {
+                Debug.Log(f);
+            }
+            
             for (int j = 0; j < 3; j++)
             {
-                if (starsCount[j])
+                if (starsFlags[j])
                     stars.GetChild(j).gameObject.SetActive(true);
                 else
                     stars.GetChild(j + 3).gameObject.SetActive(true);
             }
-        }
-
-        private void ActivateStar(GameObject star, bool isGotStar)
-        {
-            star.SetActive(isGotStar);
         }
     }
 }
