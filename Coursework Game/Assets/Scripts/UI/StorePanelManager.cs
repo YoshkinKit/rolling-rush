@@ -12,13 +12,13 @@ namespace CourseworkGame.UI
         public void SetCoinsText()
         {
             PlayerProgress playerProgress = SaveSystem.LoadPlayerProgress();
-            coinsText.text = $"Coins: {playerProgress.coinsCount}";
+            coinsText.text = $"{playerProgress.coinsCount}";
         }
         
         public void SetStarsText()
         {
             PlayerProgress playerProgress = SaveSystem.LoadPlayerProgress();
-            starsText.text = $"Stars: {playerProgress.starsCount}";
+            starsText.text = $"{playerProgress.starsCount}";
         }
     }
 }
