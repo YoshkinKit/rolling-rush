@@ -1,3 +1,4 @@
+using CourseworkGame.Saving;
 using UnityEngine;
 
 namespace CourseworkGame.Core
@@ -5,7 +6,7 @@ namespace CourseworkGame.Core
     public class Movement : MonoBehaviour
     {
         [Header("Movement Settings")]
-        [SerializeField] private MovementType movementType;
+        // [SerializeField] private MovementType movementType;
         [SerializeField] private float speed = 10f;
 
         [Header("Accelerometer Settings")]
@@ -19,6 +20,7 @@ namespace CourseworkGame.Core
         [SerializeField] private Joystick joystick;
         private Rigidbody _rigidbody;
         private Transform _mainCameraTransform;
+        private MovementType _movementType;
 
         private void Awake()
         {
@@ -37,17 +39,24 @@ namespace CourseworkGame.Core
         {
             _rigidbody = GetComponent<Rigidbody>();
             _mainCameraTransform = Camera.main.transform;
+            
+            PlayerSettings settings = SaveSystem.LoadPlayerSettings();
+            _movementType = settings.movementType;
+            joystick.gameObject.SetActive(_movementType == MovementType.Joystick);
         }
 
         private void FixedUpdate()
         {
-            switch (movementType)
+            switch (_movementType)
             {
                 case MovementType.Accelerometer:
                     MoveWithAccelerometer();
                     break;
                 case MovementType.Joystick:
                     MoveWithJoystick();
+                    break;
+                default:
+                    MoveWithJoystick();;
                     break;
             }
         }

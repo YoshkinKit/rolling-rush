@@ -18,6 +18,7 @@ namespace CourseworkGame.UI
     
         public void BackToMainMenu()
         {
+            Time.timeScale = 1f;
             LevelLoadingManager.Instance.LoadLevel("Main Menu");
         }
 

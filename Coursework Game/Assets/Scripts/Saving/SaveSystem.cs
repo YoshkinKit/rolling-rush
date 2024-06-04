@@ -7,7 +7,6 @@ namespace CourseworkGame.Saving
         public static void SavePlayerProgress(PlayerProgress progress)
         {
             string json = JsonUtility.ToJson(progress);
-            Debug.Log("Saving player progress - " + json);
             PlayerPrefs.SetString("PlayerProgress", json);
             PlayerPrefs.Save();
         }
@@ -25,7 +24,6 @@ namespace CourseworkGame.Saving
         public static void SaveLevelProgress(LevelProgress progress, string levelName)
         {
             string json = JsonUtility.ToJson(progress);
-            Debug.Log("Saving level " + levelName + " progress - " + json);
             PlayerPrefs.SetString(levelName, json);
             PlayerPrefs.Save();
         }
@@ -38,6 +36,23 @@ namespace CourseworkGame.Saving
                 return JsonUtility.FromJson<LevelProgress>(json);
             }
             return new LevelProgress();
+        }
+        
+        public static void SavePlayerSettings(PlayerSettings settings)
+        {
+            string json = JsonUtility.ToJson(settings);
+            PlayerPrefs.SetString("PlayerSettings", json);
+            PlayerPrefs.Save();
+        }
+
+        public static PlayerSettings LoadPlayerSettings()
+        {
+            if (PlayerPrefs.HasKey("PlayerSettings"))
+            {
+                string json = PlayerPrefs.GetString("PlayerSettings");
+                return JsonUtility.FromJson<PlayerSettings>(json);
+            }
+            return new PlayerSettings();
         }
     }
 }
