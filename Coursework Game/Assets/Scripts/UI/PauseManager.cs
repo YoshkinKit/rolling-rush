@@ -16,7 +16,6 @@ namespace CourseworkGame.UI
         {
             _isPaused = !_isPaused;
             panel.SetActive(_isPaused);
-            SetTimerText();
             Time.timeScale = _isPaused ? 0f : 1f;
         }
 

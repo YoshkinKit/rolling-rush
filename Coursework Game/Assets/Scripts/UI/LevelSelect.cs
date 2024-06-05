@@ -33,12 +33,8 @@ namespace CourseworkGame.UI
         private void SetStars(int index)
         {
             var stars = levelButtons[index].transform.GetChild(1);
-            var levelProgress = SaveSystem.LoadLevelProgress($"Testing {index + 1}");
+            var levelProgress = SaveSystem.LoadLevelProgress($"Level {index + 1}");
             var starsFlags = new[] { levelProgress.gotStarForLevelCompletion, levelProgress.gotStarForCollectingCoins, levelProgress.gotStarForFastCompletion};
-            foreach (var f in starsFlags)
-            {
-                Debug.Log(f);
-            }
             
             for (int j = 0; j < 3; j++)
             {

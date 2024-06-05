@@ -10,8 +10,8 @@ namespace CourseworkGame.UI
     public class FinishPanelManager : InGamePanelManager
     {
         [SerializeField] private Button nextLevelButton;
-        [SerializeField] private TextMeshProUGUI starsCountText;
         [SerializeField] private TextMeshProUGUI recordTimeText;
+        [SerializeField] private Transform stars;
     
         private void Start()
         {
@@ -20,7 +20,6 @@ namespace CourseworkGame.UI
             GlobalEventManager.OnFinish.AddListener(() =>
             {
                 panel.SetActive(true);
-                SetTimerText();
                 SetInfoText();
                 nextLevelButton.interactable = LevelLoadingManager.Instance.CurrentLevelIndex + 1 < SceneManager.sceneCountInBuildSettings;
             });
@@ -35,26 +34,24 @@ namespace CourseworkGame.UI
         {
             LevelProgress progress = SaveSystem.LoadLevelProgress(SceneManager.GetActiveScene().name);
 
-            int starsCount = 0;
-            if (progress.gotStarForLevelCompletion)
-            {
-                starsCount++;
-            }
-            if (progress.gotStarForCollectingCoins)
-            {
-                starsCount++;
-            }
-            if (progress.gotStarForFastCompletion)
-            {
-                starsCount++;
-            }
-            
-            starsCountText.text = $"Stars: {starsCount}";
-            recordTimeText.text = $"Record time: {progress.recordTime}";
+            SetStars(progress);
             
             int minutes = Mathf.FloorToInt(progress.recordTime / 60);
             int seconds = Mathf.FloorToInt(progress.recordTime % 60);
-            recordTimeText.text = $"{minutes:D2}:{seconds:D2}";
+            recordTimeText.text = $"Record time: {minutes:D2}:{seconds:D2}";
+        }
+
+        private void SetStars(LevelProgress progress)
+        {
+            var starsFlags = new[] { progress.gotStarForLevelCompletion, progress.gotStarForCollectingCoins, progress.gotStarForFastCompletion};
+            
+            for (int j = 0; j < 3; j++)
+            {
+                if (starsFlags[j])
+                    stars.GetChild(j).gameObject.SetActive(true);
+                else
+                    stars.GetChild(j + 3).gameObject.SetActive(true);
+            }
         }
     }
 }
