@@ -1,5 +1,4 @@
 using CourseworkGame.Core;
-using TMPro;
 using UnityEngine;
 
 namespace CourseworkGame.UI

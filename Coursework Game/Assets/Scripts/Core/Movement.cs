@@ -70,21 +70,6 @@ namespace CourseworkGame.Core
             Move(AdjustAcceleration(Input.acceleration));
         }
 
-        private void Move(Vector3 direction)
-        {
-            if (direction == Vector3.zero) return;
-            
-            var targetRotationYAngle = Rotate(direction);
-            var targetRotationDirection = GetTargetRotationDirection(targetRotationYAngle);
-            
-            _rigidbody.AddForce(targetRotationDirection * (Time.fixedDeltaTime * speed));
-        }
-
-        private Vector3 GetTargetRotationDirection(float targetAngle)
-        {
-            return Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-        }
-
         private Vector3 AdjustAcceleration(Vector3 acceleration)
         {
             acceleration.x = acceleration.x switch
@@ -103,6 +88,16 @@ namespace CourseworkGame.Core
             acceleration.y = 0;
 
             return acceleration;
+        }
+
+        private void Move(Vector3 direction)
+        {
+            if (direction == Vector3.zero) return;
+            
+            var targetRotationYAngle = Rotate(direction);
+            var targetRotationDirection = GetTargetRotationDirection(targetRotationYAngle);
+            
+            _rigidbody.AddForce(targetRotationDirection * (Time.fixedDeltaTime * speed));
         }
 
         private float Rotate(Vector3 direction)
@@ -135,6 +130,11 @@ namespace CourseworkGame.Core
             }
 
             return angle;
+        }
+
+        private Vector3 GetTargetRotationDirection(float targetAngle)
+        {
+            return Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
         }
 
         private void SetMovementType()
