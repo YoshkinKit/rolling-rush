@@ -8,6 +8,7 @@ namespace CourseworkGame.Core
         [Header("Movement Settings")]
         // [SerializeField] private MovementType movementType;
         [SerializeField] private float speed = 10f;
+        [SerializeField] private Joystick joystick;
 
         [Header("Accelerometer Settings")]
         [SerializeField] private float maxAccelerationX = 0.5f;
@@ -17,7 +18,6 @@ namespace CourseworkGame.Core
         private const float RightAccelerometerDeadZoneZ = 0.05f;
         private const float LeftAccelerometerDeadZoneZ = -0.1f;
 
-        [SerializeField] private Joystick joystick;
         private Rigidbody _rigidbody;
         private Transform _mainCameraTransform;
         private MovementType _movementType;
@@ -40,9 +40,8 @@ namespace CourseworkGame.Core
             _rigidbody = GetComponent<Rigidbody>();
             _mainCameraTransform = Camera.main.transform;
             
-            PlayerSettings settings = SaveSystem.LoadPlayerSettings();
-            _movementType = settings.movementType;
-            joystick.gameObject.SetActive(_movementType == MovementType.Joystick);
+            SetMovementType();
+            SetPlayerSkin();
         }
 
         private void FixedUpdate()
@@ -56,7 +55,7 @@ namespace CourseworkGame.Core
                     MoveWithJoystick();
                     break;
                 default:
-                    MoveWithJoystick();;
+                    MoveWithJoystick();
                     break;
             }
         }
@@ -75,12 +74,12 @@ namespace CourseworkGame.Core
         {
             if (direction == Vector3.zero) return;
             
-            float targetRotationYAngle = Rotate(direction);
-            Vector3 targetRotationDirection = GetTargetRotationDirection(targetRotationYAngle);
+            var targetRotationYAngle = Rotate(direction);
+            var targetRotationDirection = GetTargetRotationDirection(targetRotationYAngle);
             
             _rigidbody.AddForce(targetRotationDirection * (Time.fixedDeltaTime * speed));
         }
-        
+
         private Vector3 GetTargetRotationDirection(float targetAngle)
         {
             return Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
@@ -108,7 +107,7 @@ namespace CourseworkGame.Core
 
         private float Rotate(Vector3 direction)
         {
-            float directionAngle = GetDirectionAngle(direction);
+            var directionAngle = GetDirectionAngle(direction);
             directionAngle = AddCameraDirectionAngle(directionAngle);
 
             return directionAngle;
@@ -116,7 +115,7 @@ namespace CourseworkGame.Core
 
         private float GetDirectionAngle(Vector3 direction)
         {
-            float directionAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            var directionAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
 
             if (directionAngle < 0f)
             {
@@ -138,10 +137,24 @@ namespace CourseworkGame.Core
             return angle;
         }
 
+        private void SetMovementType()
+        {
+            var settings = SaveSystem.LoadPlayerSettings();
+            _movementType = settings.movementType;
+            joystick.gameObject.SetActive(_movementType == MovementType.Joystick);
+        }
+
+        private void SetPlayerSkin()
+        {
+            var progress = SaveSystem.LoadPlayerProgress();
+            var playerSkinPrefab = Resources.Load<GameObject>($"PlayerSkins/{progress.skinName}");
+            Instantiate(playerSkinPrefab, transform);
+        }
+
         public enum MovementType
         {
             Accelerometer,
             Joystick
-        } 
+        }
     }
 }

@@ -8,5 +8,6 @@ namespace CourseworkGame.Saving
         public int highestLevelCompleted = 1;
         public int coinsCount;
         public int starsCount;
+        public string skinName = "DefaultPlayerSkin";
     }
 }
