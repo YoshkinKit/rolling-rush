@@ -6,7 +6,7 @@ namespace CourseworkGame.Core
     {
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Coin") && CompareTag("Player"))
+            if (other.CompareTag("Coin"))
             {
                 GlobalEventManager.SendOnCoinPickup(other.gameObject);
             }
