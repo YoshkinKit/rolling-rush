@@ -128,6 +128,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dae7af1659ec931458667ef7b49b75f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: {fileID: 0}
+  coinManager: {fileID: 0}
+  timeToGetCoins: 0
+  finishPanelManager: {fileID: 0}
 --- !u!1 &2516998685228887016
 GameObject:
   m_ObjectHideFlags: 0

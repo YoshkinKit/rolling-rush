@@ -16,11 +16,10 @@ namespace CourseworkGame.UI
         private void Start()
         {
             panel.SetActive(false);
-        
+
             GlobalEventManager.OnFinish.AddListener(() =>
             {
                 panel.SetActive(true);
-                SetInfoText();
                 nextLevelButton.interactable = LevelLoadingManager.Instance.CurrentLevelIndex + 1 < SceneManager.sceneCountInBuildSettings;
             });
         }
@@ -30,7 +29,7 @@ namespace CourseworkGame.UI
             LevelLoadingManager.Instance.LoadLevel(LevelLoadingManager.Instance.CurrentLevelIndex + 1);
         }
 
-        private void SetInfoText()
+        public void SetInfoText()
         {
             LevelProgress progress = SaveSystem.LoadLevelProgress(SceneManager.GetActiveScene().name);
 

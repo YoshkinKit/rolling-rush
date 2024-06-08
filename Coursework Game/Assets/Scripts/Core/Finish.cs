@@ -1,4 +1,5 @@
 using CourseworkGame.Saving;
+using CourseworkGame.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,7 @@ namespace CourseworkGame.Core
         [SerializeField] private Timer timer;
         [SerializeField] private CoinManager coinManager;
         [SerializeField] private float timeToGetCoins;
+        [SerializeField] private FinishPanelManager finishPanelManager;
         public int StarsCount { get; private set; }
 
         private void Start()
@@ -18,6 +20,7 @@ namespace CourseworkGame.Core
                 CalculateStars();
                 SaveLevelProgress();
                 SavePlayerProgress();
+                finishPanelManager.SetInfoText();
             });
         }
 
