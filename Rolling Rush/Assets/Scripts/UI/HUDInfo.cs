@@ -10,17 +10,14 @@ namespace RollingRush.UI
         [SerializeField] private TextMeshProUGUI coinsLeftText;
         [SerializeField] private CoinManager coinManager;
         [SerializeField] private Timer timer;
-    
-        private void Awake()
+        
+        private void Start()
         {
-            GlobalEventManager.OnCoinPickup.AddListener((coin) =>
+            GlobalEventManager.OnCoinPickup.AddListener(_ =>
             {
                 coinsLeftText.text = $"Coins left: {coinManager.RemainingCoins.Count}";
             });
-        }
-
-        private void Start()
-        {
+            
             timerText.text = "00:00";
             coinsLeftText.text = $"Coins left: {coinManager.RemainingCoins.Count}";
         }

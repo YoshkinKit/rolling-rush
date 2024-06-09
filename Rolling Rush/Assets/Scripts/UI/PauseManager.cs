@@ -21,7 +21,6 @@ namespace RollingRush.UI
 
         public override void ResetLevel()
         {
-            Time.timeScale = 1f;
             base.ResetLevel();
         }
     }

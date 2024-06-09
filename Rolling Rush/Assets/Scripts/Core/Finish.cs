@@ -10,17 +10,13 @@ namespace RollingRush.Core
         [SerializeField] private Timer timer;
         [SerializeField] private CoinManager coinManager;
         [SerializeField] private float timeToGetCoins;
-        [SerializeField] private FinishPanelManager finishPanelManager;
-        public int StarsCount { get; private set; }
 
-        private void Start()
+        private void Awake()
         {
             GlobalEventManager.OnFinish.AddListener(() =>
             {
-                CalculateStars();
                 SaveLevelProgress();
                 SavePlayerProgress();
-                finishPanelManager.SetInfoText();
             });
         }
 
@@ -29,20 +25,6 @@ namespace RollingRush.Core
             if (other.CompareTag("Player"))
             {
                 GlobalEventManager.SendOnFinish();
-            }
-        }
-
-        private void CalculateStars()
-        {
-            StarsCount++;
-            if (coinManager.RemainingCoins.Count == 0)
-            {
-                StarsCount++;
-            }
-
-            if (timer.LevelTime < timeToGetCoins)
-            {
-                StarsCount++;
             }
         }
 

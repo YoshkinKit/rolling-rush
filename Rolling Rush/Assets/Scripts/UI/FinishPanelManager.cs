@@ -21,6 +21,7 @@ namespace RollingRush.UI
             {
                 panel.SetActive(true);
                 nextLevelButton.interactable = LevelLoadingManager.Instance.CurrentLevelIndex + 1 < SceneManager.sceneCountInBuildSettings;
+                SetInfoText();
             });
         }
 
@@ -29,7 +30,7 @@ namespace RollingRush.UI
             LevelLoadingManager.Instance.LoadLevel(LevelLoadingManager.Instance.CurrentLevelIndex + 1);
         }
 
-        public void SetInfoText()
+        private void SetInfoText()
         {
             LevelProgress progress = SaveSystem.LoadLevelProgress(SceneManager.GetActiveScene().name);
 
@@ -44,12 +45,12 @@ namespace RollingRush.UI
         {
             var starsFlags = new[] { progress.gotStarForLevelCompletion, progress.gotStarForCollectingCoins, progress.gotStarForFastCompletion};
             
-            for (int j = 0; j < 3; j++)
+            for (int i = 0; i < 3; i++)
             {
-                if (starsFlags[j])
-                    stars.GetChild(j).gameObject.SetActive(true);
+                if (starsFlags[i])
+                    stars.GetChild(i).gameObject.SetActive(true);
                 else
-                    stars.GetChild(j + 3).gameObject.SetActive(true);
+                    stars.GetChild(i + 3).gameObject.SetActive(true);
             }
         }
     }

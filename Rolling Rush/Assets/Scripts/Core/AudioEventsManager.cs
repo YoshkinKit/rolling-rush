@@ -20,32 +20,11 @@ namespace RollingRush.Core
 
         private void Start()
         {
-            SetAudioSubscriptions();
-        }
-
-        private void SetAudioSubscriptions()
-        {
             GlobalEventManager.OnCoinPickup.AddListener(_ => _source.PlayOneShot(coinPickupSound));
-            GlobalEventManager.OnFinish.AddListener(PlayFinishSoundSubscription);
-            GlobalEventManager.OnDeath.AddListener(PlayGameOverSoundSubscription);
-        }
-
-        private void OnDestroy()
-        {
-            GlobalEventManager.OnFinish.RemoveListener(PlayFinishSoundSubscription);
-            GlobalEventManager.OnDeath.RemoveListener(PlayGameOverSoundSubscription);
-        }
-
-        private void PlayFinishSoundSubscription()
-        {
-            PlaySoundAfterAd(finishSound);
+            GlobalEventManager.OnFinish.AddListener(() => PlaySoundAfterAd(finishSound));
+            GlobalEventManager.OnDeath.AddListener(() => PlaySoundAfterAd(gameOverSound));
         }
         
-        private void PlayGameOverSoundSubscription()
-        {
-            PlaySoundAfterAd(gameOverSound);
-        }
-
         private void PlaySoundAfterAd(AudioClip clip)
         {
             backgroundMusicSource.enabled = false;

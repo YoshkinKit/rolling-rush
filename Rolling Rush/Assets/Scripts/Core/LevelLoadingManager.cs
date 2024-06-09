@@ -28,6 +28,7 @@ namespace RollingRush.Core
             {
                 SceneManager.LoadScene(levelIndex);
                 CurrentLevelIndex = levelIndex;
+                Time.timeScale = 1f;
             }
         }
         
