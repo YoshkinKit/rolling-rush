@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CourseworkGame.Shop
+namespace RollingRush.Shop
 {
     [CreateAssetMenu]
     public class ShopItemSO : ScriptableObject

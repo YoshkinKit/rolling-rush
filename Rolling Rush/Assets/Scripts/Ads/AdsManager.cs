@@ -1,9 +1,9 @@
 ﻿using System;
-using CourseworkGame.Core;
 using GoogleMobileAds.Api;
+using RollingRush.Core;
 using UnityEngine;
 
-namespace CourseworkGame.Ads
+namespace RollingRush.Ads
 {
     public class AdsManager : MonoBehaviour
     {

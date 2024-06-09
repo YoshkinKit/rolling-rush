@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CourseworkGame.Core
+namespace RollingRush.Core
 {
     public class CoinPickup : MonoBehaviour
     {

@@ -1,7 +1,7 @@
-﻿using CourseworkGame.Saving;
+﻿using RollingRush.Saving;
 using UnityEngine;
 
-namespace CourseworkGame.Core
+namespace RollingRush.Core
 {
     public class Movement : MonoBehaviour
     {

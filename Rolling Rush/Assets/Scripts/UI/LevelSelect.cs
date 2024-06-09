@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using CourseworkGame.Core;
-using CourseworkGame.Saving;
+using RollingRush.Core;
+using RollingRush.Saving;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CourseworkGame.UI
+namespace RollingRush.UI
 {
     public class LevelSelect : MonoBehaviour
     {

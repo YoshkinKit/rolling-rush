@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace CourseworkGame.Core
+namespace RollingRush.Core
 {
     public class GlobalEventManager : MonoBehaviour
     {

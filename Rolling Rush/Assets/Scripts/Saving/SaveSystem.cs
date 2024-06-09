@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CourseworkGame.Saving
+namespace RollingRush.Saving
 {
     public static class SaveSystem
     {

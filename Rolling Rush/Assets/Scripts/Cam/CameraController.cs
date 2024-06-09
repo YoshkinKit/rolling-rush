@@ -1,7 +1,7 @@
 ﻿using Cinemachine;
 using UnityEngine;
 
-namespace CourseworkGame.Cam
+namespace RollingRush.Cam
 {
     public class CameraController : MonoBehaviour
     {

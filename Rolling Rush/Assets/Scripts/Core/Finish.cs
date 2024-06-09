@@ -1,9 +1,9 @@
-﻿using CourseworkGame.Saving;
-using CourseworkGame.UI;
+﻿using RollingRush.Saving;
+using RollingRush.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace CourseworkGame.Core
+namespace RollingRush.Core
 {
     public class Finish : MonoBehaviour
     {

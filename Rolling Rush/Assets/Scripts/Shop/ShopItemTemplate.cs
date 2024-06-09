@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace CourseworkGame.Shop
+namespace RollingRush.Shop
 {
     public class ShopItemTemplate : MonoBehaviour
     {

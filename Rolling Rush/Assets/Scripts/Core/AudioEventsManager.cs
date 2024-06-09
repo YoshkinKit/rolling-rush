@@ -1,8 +1,7 @@
-﻿using System;
-using CourseworkGame.Ads;
+﻿using RollingRush.Ads;
 using UnityEngine;
 
-namespace CourseworkGame.Core
+namespace RollingRush.Core
 {
     public class AudioEventsManager : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace CourseworkGame.Shop
+namespace RollingRush.Shop
 {
     public class ShopManager : MonoBehaviour
     {

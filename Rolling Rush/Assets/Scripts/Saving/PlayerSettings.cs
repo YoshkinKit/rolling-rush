@@ -1,7 +1,7 @@
 ﻿using System;
-using CourseworkGame.Core;
+using RollingRush.Core;
 
-namespace CourseworkGame.Saving
+namespace RollingRush.Saving
 {
     [Serializable]
     public class PlayerSettings

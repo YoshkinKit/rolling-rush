@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace CourseworkGame.Core
+namespace RollingRush.Core
 {
     public class LevelLoadingManager : MonoBehaviour
     {

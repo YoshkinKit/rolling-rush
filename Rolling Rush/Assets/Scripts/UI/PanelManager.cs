@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CourseworkGame.UI
+namespace RollingRush.UI
 {
     public class PanelManager : MonoBehaviour
     {

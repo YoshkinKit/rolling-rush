@@ -1,9 +1,9 @@
 ﻿using System.Collections;
-using CourseworkGame.Core;
+using RollingRush.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CourseworkGame.UI
+namespace RollingRush.UI
 {
     public class DeathPanelManager : InGamePanelManager
     {

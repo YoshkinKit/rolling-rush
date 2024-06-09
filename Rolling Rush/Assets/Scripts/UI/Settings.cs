@@ -1,11 +1,11 @@
-﻿using CourseworkGame.Core;
-using CourseworkGame.Saving;
+﻿using RollingRush.Core;
+using RollingRush.Saving;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-namespace CourseworkGame.UI
+namespace RollingRush.UI
 {
     public class Settings : MonoBehaviour
     {

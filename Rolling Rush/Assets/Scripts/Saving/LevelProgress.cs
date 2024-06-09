@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CourseworkGame.Saving
+namespace RollingRush.Saving
 {
     [Serializable]
     public class LevelProgress

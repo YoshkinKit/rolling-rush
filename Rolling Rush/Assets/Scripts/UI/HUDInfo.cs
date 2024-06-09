@@ -1,8 +1,8 @@
-﻿using CourseworkGame.Core;
+﻿using RollingRush.Core;
 using TMPro;
 using UnityEngine;
 
-namespace CourseworkGame.UI
+namespace RollingRush.UI
 {
     public class HUDInfo : MonoBehaviour
     {

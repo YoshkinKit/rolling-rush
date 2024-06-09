@@ -1,7 +1,7 @@
-﻿using CourseworkGame.Core;
+﻿using RollingRush.Core;
 using UnityEngine;
 
-namespace CourseworkGame.UI
+namespace RollingRush.UI
 {
     public class InGamePanelManager : MonoBehaviour
     {

@@ -1,8 +1,8 @@
-﻿using CourseworkGame.Saving;
+﻿using RollingRush.Saving;
 using TMPro;
 using UnityEngine;
 
-namespace CourseworkGame.UI
+namespace RollingRush.UI
 {
     public class StorePanelManager : MonoBehaviour
     {

@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace CourseworkGame.Core
+namespace RollingRush.Core
 {
     public class CoinManager : MonoBehaviour
     {
