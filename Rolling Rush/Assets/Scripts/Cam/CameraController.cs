@@ -12,7 +12,7 @@ namespace CourseworkGame.Cam
         private Camera _mainCamera;
         private Vector2 _lookInput;
         private int _joystickFingerId = -1;
-
+        
         private void Start()
         {
             _virtualCamera = GetComponent<CinemachineVirtualCamera>();
