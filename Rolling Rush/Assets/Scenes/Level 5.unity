@@ -4736,6 +4736,7 @@ MonoBehaviour:
   coinPickupSound: {fileID: 8300000, guid: 0b336baeb425ce943a2c8927e3ee7aff, type: 3}
   finishSound: {fileID: 8300000, guid: 4bbe4fb33f81b33469c726bd86a7f1f4, type: 3}
   gameOverSound: {fileID: 8300000, guid: 294f3429468727d4aa47afe57e0448e5, type: 3}
+  adsManager: {fileID: 8050177049690597651}
 --- !u!4 &1728328073
 Transform:
   m_ObjectHideFlags: 0
@@ -5711,6 +5712,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1345006628}
     - target: {fileID: 2754919301157443875, guid: 64fcd748b5fbd9d4caa37a3370bffa82, type: 3}
+      propertyPath: adsManager
+      value: 
+      objectReference: {fileID: 8050177049690597651}
+    - target: {fileID: 2754919301157443875, guid: 64fcd748b5fbd9d4caa37a3370bffa82, type: 3}
       propertyPath: coinManager
       value: 
       objectReference: {fileID: 1737457096}
@@ -6138,6 +6143,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc81d71f40f9781499c8f68f5fada430, type: 3}
+--- !u!114 &8050177049690597651 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9142551904025395028, guid: dc81d71f40f9781499c8f68f5fada430, type: 3}
+  m_PrefabInstance: {fileID: 8050177049690597650}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1227ed8f240846cf908e90f5be86b72f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8271914694310006668
 MonoBehaviour:
   m_ObjectHideFlags: 0

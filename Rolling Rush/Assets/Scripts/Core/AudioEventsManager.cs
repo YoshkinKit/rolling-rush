@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using CourseworkGame.Ads;
+using UnityEngine;
 
 namespace CourseworkGame.Core
 {
@@ -8,6 +10,7 @@ namespace CourseworkGame.Core
         [SerializeField] private AudioClip coinPickupSound;
         [SerializeField] private AudioClip finishSound;
         [SerializeField] private AudioClip gameOverSound;
+        [SerializeField] private AdsManager adsManager;
         
         private AudioSource _source;
 
@@ -24,16 +27,38 @@ namespace CourseworkGame.Core
         private void SetAudioSubscriptions()
         {
             GlobalEventManager.OnCoinPickup.AddListener(_ => _source.PlayOneShot(coinPickupSound));
-            GlobalEventManager.OnFinish.AddListener(() =>
+            GlobalEventManager.OnFinish.AddListener(PlayFinishSoundSubscription);
+            GlobalEventManager.OnDeath.AddListener(PlayGameOverSoundSubscription);
+        }
+
+        private void OnDestroy()
+        {
+            GlobalEventManager.OnFinish.RemoveListener(PlayFinishSoundSubscription);
+            GlobalEventManager.OnDeath.RemoveListener(PlayGameOverSoundSubscription);
+        }
+
+        private void PlayFinishSoundSubscription()
+        {
+            PlaySoundAfterAd(finishSound);
+        }
+        
+        private void PlayGameOverSoundSubscription()
+        {
+            PlaySoundAfterAd(gameOverSound);
+        }
+
+        private void PlaySoundAfterAd(AudioClip clip)
+        {
+            backgroundMusicSource.enabled = false;
+            if (adsManager.CanShowAd && adsManager.AdLoaded)
             {
-                backgroundMusicSource.enabled = false;
-                _source.PlayOneShot(finishSound);
-            });
-            GlobalEventManager.OnDeath.AddListener(() =>
+                adsManager.ShowInterstitialAd(() => _source.PlayOneShot(clip));
+            }
+            else
             {
-                backgroundMusicSource.enabled = false;
-                _source.PlayOneShot(gameOverSound);
-            });
+                _source.PlayOneShot(clip);
+            }
+            LevelLoadingManager.Instance.AttemptsCount++;
         }
     }
 }

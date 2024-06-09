@@ -7,6 +7,7 @@ namespace CourseworkGame.Core
     {
         public static LevelLoadingManager Instance { get; private set; }
         public int CurrentLevelIndex { get; private set; }
+        public int AttemptsCount { get; set; }
 
         private void Awake()
         {
