@@ -15,12 +15,6 @@ git clone https://github.com/YoshkinKit/rolling-rush.git
 - Open the project in Unity 2022.3.24f1.
 - Build and run the project on an Android device.
 
-### Gameplay Screenshots/Video
-WIP
-
-### Requirements
-WIP
-
 ### Technologies
 - Unity 2022.3.24f1
 - C#
@@ -28,7 +22,3 @@ WIP
 
 ### Developers
 Nikita Zhmak — Developer
-
-### Future Plans
-WIP
-<!-- Сделать как чекбокс -->
